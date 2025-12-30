@@ -1,0 +1,24 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Login to GitHub Contaier registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{github.actor}}
+        password: ${{secrets.GITHUB_TOKEN}}
+    - name: Build the Docker image
+      run: |
+        IMAGE_TAG=$(date +%s)
+        docker build -t ghcr.io/monsi1000/freeradius-ldap:$IMAGE_TAG .
+        docker push ghcr.io/monsi1000/freeradius-ldap:$IMAGE_TAG
