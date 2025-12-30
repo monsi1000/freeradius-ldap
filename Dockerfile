@@ -15,8 +15,7 @@ RUN apt-get update && \
     apt-get -y clean all
 
 # Install tini init
-ENV TINI_VERSION v0.19.0
-RUN curl -L https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini > /usr/bin/tini \
+RUN curl -L https://github.com/krallin/tini/releases/download/v0.19.0/tini > /usr/bin/tini \
         && chmod +x /usr/bin/tini
 
 # Copy our configuration
