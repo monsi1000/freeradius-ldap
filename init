@@ -17,7 +17,7 @@ RADIUS_CLIENT_CREDENTIALS="${RADIUS_CLIENT_CREDENTIALS:-}"
 RADIUSD_ARGS="${RADIUSD_ARGS:--f -l stdout}"
 
 ldap_subst() {
-    sed -i -e "s/${1}/${2}/g" /etc/raddb/mods-available/ldap
+    sed -i -e "s/${1}/${2}/g" /etc/freeradius/3.0/mods-available/ldap
 }
 
 # substitute variables into LDAP configuration file
@@ -31,7 +31,7 @@ ldap_subst "@LDAP_GROUP_BASEDN@" "${LDAP_GROUP_BASEDN}"
 ldap_subst "@LDAP_CLIENT_BASEDN@" "${LDAP_CLIENT_BASEDN}"
 
 # enable ldap
-ln -s /etc/raddb/mods-available/ldap /etc/raddb/mods-enabled/ldap
+ln -s /etc/freeradius/3.0/mods-available/ldap /etc/freeradius/3.0/mods-enabled/ldap
 
 # configure the default site for ldap
 sed -i -e 's/-ldap/ldap/g' /etc/raddb/sites-available/default

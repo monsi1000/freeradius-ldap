@@ -20,5 +20,5 @@ RUN curl -L https://github.com/krallin/tini/releases/download/${TINI_VERSION}/ti
         && chmod +x /usr/bin/tini
 
 # Copy our configuration
-COPY ldap /etc/raddb/mods-available/
+COPY ldap /etc/freeradius/3.0/mods-available/
 COPY init /
