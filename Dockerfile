@@ -10,7 +10,7 @@ EXPOSE 1813/udp
 
 # Install freeradius with ldap support
 RUN apt-get update && \
-    apt-get install -y freeradius-ldap curl && \
+    apt-get install -y freeradius freeradius-ldap freeradius-common curl && \
     apt-get -y update && \
     apt-get -y clean all
 
